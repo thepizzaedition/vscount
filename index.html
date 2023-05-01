@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('userCount',function(msg){
+        document.getElementById("count").innerHTML = msg;
+          
+      })
+    </script>
+  </head>
+  <body>
+    <span id="count" style="opacity: 1;">0</span>
+    <script>
+     
+      function send(){
+        var count = document.getElementById('count').innerText;
+      window.top.postMessage(count, '*')
+      }
+      setTimeout(function() {
+        send();
+        
+      }, 500);
+      setInterval(function() {
+        send();
+      }, 5000);
+    </script>
+  </body>
+</html>
+users online
+<style>
+body {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #fff;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: arial;
+  font-weight: bold;
+  color: #white;
+  margin-top: 20px;
+
+p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+    align-items: center;
+}
+
+  
+
+</style>
